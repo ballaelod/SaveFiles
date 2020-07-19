@@ -7,7 +7,7 @@
 <h2>Upload</h2>
 
 
-@using (Html.BeginForm("UploadFiles", "UploadFile", FormMethod.Post, new {enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Upload", "UploadFile", FormMethod.Post, new {enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -25,10 +25,6 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ImgPath, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-            <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.ImgPath, "", new { @type = "file", @multiple = "multiple" })
-                        @Html.ValidationMessageFor(model => model.ImgPath, "", new { @class = "text-danger" })
-                    </div>
                     <input type="file" name="UploadFile" multiple="multiple"></div>
             </div>
 

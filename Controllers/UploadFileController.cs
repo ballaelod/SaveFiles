@@ -25,54 +25,28 @@ namespace SaveFiles.Controllers
         }
         
         [HttpPost]
-       // public ActionResult Upload(Saveimg filemodel)
-       //{
-       //    try 
-       //    {
-       //        string fileName = Path.GetFileNameWithoutExtension(filemodel.UploadFile.FileName);
-       //        filemodel.ImgPath = "~/UploadedFile/" + fileName + ".jpg";
-       //        filemodel.ImgName = fileName;
-       //        fileName = Path.Combine(Server.MapPath("~/UploadedFile/"), fileName);
-       //        filemodel.UploadFile.SaveAs(fileName + ".jpg");
-       //        db.Saveimgs.Add(filemodel);
-       //        db.SaveChanges();
-       //    }
-       //    catch
-       //    {
-       //        ViewBag.msg = "Error while uploading the files";
-       //    }
-    
-            
-            
-            
-            
-       //     ModelState.Clear();
-       //     return View();  
-       //}
-
-        public ActionResult UploadFiles(HttpPostedFileBase[] files)
+        public ActionResult Upload(Saveimg filemodel)
         {
-
-            //Ensure model state is valid  
-            if (ModelState.IsValid)
-            {   //iterating through multiple file collection   
-                foreach (HttpPostedFileBase file in files)
-                {
-                    //Checking file is available to save.  
-                    if (file != null)
-                    {
-                        var InputFileName = Path.GetFileName(file.FileName);
-                        var ServerSavePath = Path.Combine(Server.MapPath("~/UploadedFile/") + InputFileName);
-                        //Save file to server folder  
-                        file.SaveAs(ServerSavePath);
-                        //assigning file uploaded status to ViewBag for showing message to user.  
-                        ViewBag.UploadStatus = files.Count().ToString() + " files uploaded successfully.";
-                    }
-
-                }
+            try
+            {
+                string fileName = Path.GetFileNameWithoutExtension(filemodel.UploadFile.FileName);
+                filemodel.ImgPath = "~/UploadedFile/" + fileName + ".jpg";
+                filemodel.ImgName = fileName;
+                fileName = Path.Combine(Server.MapPath("~/UploadedFile/"), fileName);
+                filemodel.UploadFile.SaveAs(fileName + ".jpg");
+                db.Saveimgs.Add(filemodel);
+                db.SaveChanges();
             }
+            catch
+            {
+                ViewBag.msg = "Error while uploading the files";
+            }
+
+            ModelState.Clear();
             return View();
-        }  
+        }
+
+  
 
         [HttpGet]
         public ActionResult View(int id)
