@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Download";
+}
+ 
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Download Files</title>
+</head>
+<body>
+    <div>
+        @foreach(var item in ViewData.Model)
+        {
+            @Html.ActionLink((string)item, "DownloadFile", new { filename = item });
+            <br />
+        }
+    </div>
+</body>
+</html>
+
+
+<p></p>
+</br>
+@Html.ActionLink("Back to Home", "Index", "Home")
+    </br>
+@Html.ActionLink("Back to List", "List", "UploadFile")

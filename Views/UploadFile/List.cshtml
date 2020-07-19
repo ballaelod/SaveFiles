@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SaveFiles.Models.Saveimg>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Add New File", "Upload")
+</p>
+@using(Html.BeginForm("List", "UploadFile",FormMethod.Get))
+{
+   @Html.TextBox("search")
+    <input type="submit" value="search" />
+    
+    
+    
+}
+</br>
+@Html.ActionLink("Back to List", "List", "UploadFile")
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImgPath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImgName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImgPath)
+        </td>
+        <td>
+            @Html.ActionLink("View", "View", new { id=item.ImgId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImgId }) |
+            @Html.ActionLink("Rename", "Rename", new { id = item.ImgId }) |
+            @Html.ActionLink("Rename All", "RenameAll", new { id = item.ImgId }) 
+
+
+        </td>
+    </tr>
+}
+
+</table>
+ @Html.ActionLink("Back to Home", "Index", "Home")<p></p>
+@Html.ActionLink("Go to Download", "Download", "Download")

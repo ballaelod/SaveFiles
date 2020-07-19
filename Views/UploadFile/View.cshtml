@@ -1,0 +1,35 @@
+﻿@model SaveFiles.Models.Saveimg
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Saveimg</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImgName)
+        </dd>
+
+        <dt>
+           
+        </dt>
+
+        <dd>
+            <img src="@Url.Content(@Model.ImgPath)" width="250" height="250"/>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "List", "UploadFile") |
+    @Html.ActionLink("Back to Home", "Index", "Home")
+
+</p>

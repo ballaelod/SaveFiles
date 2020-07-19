@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataSaveDBModelStoreContainer" CdmEntityContainer="DataSaveDBEntities">
+    <EntitySetMapping Name="Saveimgs">
+      <EntityTypeMapping TypeName="DataSaveDBModel.Saveimg">
+        <MappingFragment StoreEntitySet="Saveimg">
+          <ScalarProperty Name="ImgId" ColumnName="ImgId" />
+          <ScalarProperty Name="ImgName" ColumnName="ImgName" />
+          <ScalarProperty Name="ImgPath" ColumnName="ImgPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
